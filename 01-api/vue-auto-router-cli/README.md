@@ -5,3 +5,4 @@
 - chalk #>> 粉笔 好看的字符格式
 - ora   #>> 命令行进度条
 - download-git-repo   #>> clone的库
+- handlebas   #>> 渲染模板
