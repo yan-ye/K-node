@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <form action="" method="post">
-        <input type="file" name="upload" id="">
+        <input type="file" name="upload" id="upload">
     </form>
 </body>
+<script>
+    window.onload = () => {
+        var files = document.getElementsByTagName('input'),
+            file,
+            len = files.length;
+
+        for (let index = 0; index < len; index++) {
+            file = files[index];
+            if (file.type !== 'file') continue
+            console.log(1111);
+            file.onchange = function () {
+                const _file = this.files
+                if (_file.length === 1) { //单个文件
+                    const xhr = new XMLHttpRequest()
+                    xhr.open('POST', 'http://localhost:3000/upload')
+                    const filePath = files[0].value
+                    console.log(filePath.substring(filePath.lastIndexOf('\\') + 1), '>>>>>');
+                    xhr.setRequestHeader('file-name', filePath.substring(filePath.lastIndexOf('\\') + 1));
+                    xhr.send(_file[0]);
+                } else { }
+            }
+
+        }
+
+    }
+</script>
+
 </html>
