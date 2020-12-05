@@ -38,7 +38,7 @@ http.createServer((req, res) => {
         })
         req.on('end', () =>{
             console.log('end....');
-            const buffer = Buffer.concat([chunk, size)
+            const buffer = Buffer.concat([chunk, size])
             size = 0
             fs.writeFileSync(outPath, buffer)
             res.end()
